@@ -1,0 +1,16 @@
+{
+  "name": "asp.net",
+  "dependencies": {
+    "foundation-sites": "6.4.3",
+    "foundation-icons": "1.0.1",
+    "jquery": "2.2.0",
+    "jquery-validation": "1.14.0",
+    "jquery-validation-unobtrusive": "3.2.6",
+    "jqueryui": "1.11.1",
+    "blockly": "1.0.0"
+  },
+  "devDependencies": {
+    "gulp": "3.9.1",
+    "gulp-sass": "3.1.0"
+  }
+}

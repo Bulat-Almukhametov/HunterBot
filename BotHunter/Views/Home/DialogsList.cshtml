@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BotHunter.Models.Dialog>
+
+@{
+    ViewBag.Title = "Список диалогов";
+}
+
+<h2>Список диалогов</h2>
+
+<p>
+    <a class="button success" href="~/Home/Dialog"><i class="fi-plus"></i> Добавить</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Creator)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "Dialog", new { id = item.Id })
+            </td>
+            <td>
+                Html.ActionLink(item.Creator.Name, "Creator", new { id = item.Creator.Id })
+            </td>
+            <td>
+                @Html.ActionLink("Просмотр", "Dialog", new { id = item.Id }, new { @class = "button" })
+                @Html.ActionLink("Удалить", "DialogsList", new { id = item.Id, operation = "delete" }, new { @class = "button alert" })
+            </td>
+        </tr>
+    }
+
+</table>
