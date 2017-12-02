@@ -16,8 +16,10 @@ namespace BotHunter.Models
         [DisplayName("Название")]
         public string Name { get; set; }
 
+        [DisplayName("Структура блоков")]
         public string BlocksXml { get; set; }
 
+        [DisplayName("Сценарий диалога")]
         public string Aiml { get; set; }
     }
 }

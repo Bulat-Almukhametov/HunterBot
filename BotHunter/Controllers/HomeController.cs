@@ -8,6 +8,7 @@ using System.Data.Entity;
 
 namespace BotHunter.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         DataRepository _DataRepository;

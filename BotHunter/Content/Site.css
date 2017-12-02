@@ -3,3 +3,27 @@
     font-weight: 600;
     font-size: large;
 }
+
+#logoff {
+    display: inline;
+}
+
+#logoffButton {
+    background: none;
+    border: none;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: serif;
+    float: right;
+    margin-top: 10px;
+}
+
+    #logoffButton:focus {
+        outline: none;
+    }
+
+    #logoffButton:active {
+        color: red;
+    }

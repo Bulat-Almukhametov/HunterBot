@@ -155,13 +155,34 @@
     <Content Include="AimlBotXmls\config\Settings.xml" />
     <Content Include="AimlBotXmls\config\Splitters.xml" />
     <Content Include="AimlBotXmls\config\Substitutions.xml" />
+    <Content Include="Content\Authorize.css" />
     <Content Include="Content\bot.jpg" />
     <Content Include="Content\foundation.css" />
+    <Content Include="Content\media\1x1.gif" />
+    <Content Include="Content\media\click.mp3" />
+    <Content Include="Content\media\click.wav" />
+    <Content Include="Content\media\delete.mp3" />
+    <Content Include="Content\media\delete.wav" />
+    <Content Include="Content\media\disconnect.mp3" />
+    <Content Include="Content\media\disconnect.wav" />
+    <Content Include="Content\media\handclosed.cur" />
+    <Content Include="Content\media\handdelete.cur" />
+    <Content Include="Content\media\handopen.cur" />
+    <Content Include="Content\media\quote0.png" />
+    <Content Include="Content\media\quote1.png" />
+    <Content Include="Content\media\sprites.png" />
+    <Content Include="Content\media\sprites.svg" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Gulpfile.js" />
     <Content Include="package.json" />
+    <Content Include="Content\media\click.ogg" />
+    <Content Include="Content\media\delete.ogg" />
+    <Content Include="Content\media\disconnect.ogg" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\blockly_compressed.js" />
+    <Content Include="Scripts\blocks_compressed.js" />
+    <Content Include="Scripts\foundation.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -170,6 +191,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ru.js" />
+    <Content Include="Scripts\sha1.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -198,6 +221,7 @@
     <Compile Include="Models\Personality.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserCredentials.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -247,6 +271,7 @@
     <Content Include="Views\Home\PersonalitiesList.cshtml" />
     <Content Include="Views\Home\Personality.cshtml" />
     <Content Include="Views\Home\SkillsList.cshtml" />
+    <Content Include="Views\Authorize\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -256,7 +281,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Authorize\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711200355331_CreateEntities.resx">
