@@ -14,7 +14,7 @@
 </head>
 <body>
     <header class="padding-right-1">
-        <a class="button" data-toggle="offCanvas">Меню</a>
+        <a class="button" id="menuButton" data-toggle="offCanvas"><i id="menuIcon" class="fi-list-bullet"></i></a>
         <form method="post" action="~/Authorize/Logoff" id="logoff">
             <button type="submit" name="submit_param" value="submit_value" id="logoffButton">
                 Выйти
@@ -49,12 +49,13 @@
                 <a>Редактор бота</a>
                 @{
                     string dialogsActiveClass = ((actionName == "DialogsList" || actionName == "Dialog") && controllerName == "Home") ? "is-active" : "";
-                    string redactorActiveClass = dialogsActiveClass.IsEmpty() ? "" : "is-active";
+                    string skillsActiveClass = ((actionName == "SkillsList") && controllerName == "Home") ? "is-active" : "";
+                    string redactorActiveClass = dialogsActiveClass.IsEmpty() && skillsActiveClass.IsEmpty() ? "" : "is-active";
                 }
                 <ul class="menu vertical nested @redactorActiveClass">
 
                     <li class="@dialogsActiveClass">@Html.ActionLink("Диалоги", "DialogsList", "Home")</li>
-                    <li><a>Навыки</a></li>
+                    <li class=@skillsActiveClass>@Html.ActionLink("Навыки", "SkillsList", "Home")</li>
                 </ul>
             </li>
         </ul>

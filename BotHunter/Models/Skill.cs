@@ -5,11 +5,15 @@ using System.Web;
 
 namespace BotHunter.Models
 {
-    public class Skill
+    public class Skill :Entity
     {
-        public Guid Id { get; set; }
         public Personality Personality { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+
+        static Skill()
+        {
+            GetInstance = () => new Skill();
+        }
     }
 }

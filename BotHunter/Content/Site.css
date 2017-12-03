@@ -8,6 +8,16 @@
     display: inline;
 }
 
+#menuButton {
+    width: 70px;
+    background-color: #dddddd;
+}
+
+#menuIcon {
+    font-size: 35px;
+    color: lightslategray;
+}
+
 #logoffButton {
     background: none;
     border: none;

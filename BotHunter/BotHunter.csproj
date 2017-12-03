@@ -158,6 +158,7 @@
     <Content Include="Content\Authorize.css" />
     <Content Include="Content\bot.jpg" />
     <Content Include="Content\foundation.css" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\media\1x1.gif" />
     <Content Include="Content\media\click.mp3" />
     <Content Include="Content\media\click.wav" />
@@ -179,6 +180,9 @@
     <Content Include="Content\media\click.ogg" />
     <Content Include="Content\media\delete.ogg" />
     <Content Include="Content\media\disconnect.ogg" />
+    <Content Include="Content\foundation-icons.ttf" />
+    <Content Include="Content\foundation-icons.woff" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\blockly_compressed.js" />
     <Content Include="Scripts\blocks_compressed.js" />
@@ -215,9 +219,20 @@
     <Compile Include="Migrations\201711200355331_CreateEntities.Designer.cs">
       <DependentUpon>201711200355331_CreateEntities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712031331403_CommonEntity.cs" />
+    <Compile Include="Migrations\201712031331403_CommonEntity.Designer.cs">
+      <DependentUpon>201712031331403_CommonEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712031336106_CommonEntityNullable.cs" />
+    <Compile Include="Migrations\201712031336106_CommonEntityNullable.Designer.cs">
+      <DependentUpon>201712031336106_CommonEntityNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\DataRepository.cs" />
+    <Compile Include="Models\Infrastructure\DataRepository.cs" />
     <Compile Include="Models\Dialog.cs" />
+    <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\Infrastructure\FormsAuthorization.cs" />
+    <Compile Include="Models\Infrastructure\IAuthorization.cs" />
     <Compile Include="Models\Personality.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\User.cs" />
@@ -285,6 +300,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711200355331_CreateEntities.resx">
       <DependentUpon>201711200355331_CreateEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712031331403_CommonEntity.resx">
+      <DependentUpon>201712031331403_CommonEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712031336106_CommonEntityNullable.resx">
+      <DependentUpon>201712031336106_CommonEntityNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

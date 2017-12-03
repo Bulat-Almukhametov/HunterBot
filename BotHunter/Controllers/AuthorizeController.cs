@@ -1,4 +1,5 @@
 ﻿using BotHunter.Models;
+using BotHunter.Models.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,12 @@ namespace BotHunter.Controllers
 {
     public class AuthorizeController : Controller
     {
+        IAuthorization _AuthorizeHelper;
         DataRepository _DataRepository;
-        public AuthorizeController(DataRepository dataRepository)
+        public AuthorizeController(DataRepository dataRepository, IAuthorization authorizeHelper)
         {
             _DataRepository = dataRepository;
+            _AuthorizeHelper = authorizeHelper;
         }
         // TODO: сделать авторизацию
         public ActionResult Index()
@@ -38,7 +41,6 @@ namespace BotHunter.Controllers
                     if (credentials.HashValue.Equals(hashString, StringComparison.OrdinalIgnoreCase))
                     {
                         FormsAuthentication.SetAuthCookie(credentials.Login, true);
-                        HttpContext.Session["UserName"] = user.Name;
 
                         return RedirectToAction("Index", "Home");
                     }
@@ -51,7 +53,7 @@ namespace BotHunter.Controllers
         [HttpPost]
         public ActionResult Logoff()
         {
-            FormsAuthentication.SignOut();
+            _AuthorizeHelper.LogOff();
             return RedirectToAction("Index");
         }
     }

@@ -4,16 +4,14 @@
     ViewBag.Title = "Диалог";
 }
 
-<h2>Dialog</h2>
+<h2 class="padding-left-3">Постройте диалог</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
-        <h4>Dialog</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
@@ -38,8 +36,8 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="button success" />
-                @Html.ActionLink("Назад", "DialogsList", new { @class = "button" })
+                <input type="submit" value="Сохранить" class="button success" />
+                @Html.ActionLink("Назад", "DialogsList", null, new { @class = "button" })
             </div>
         </div>
     </div>
@@ -49,15 +47,15 @@
 
 </div>
 @section TopScripts {
-    <script type="text/javascript" src="~/Scripts/blockly_compressed.js"></script>
-    <script type="text/javascript" src="~/Scripts/blocks_compressed.js"></script>
-    <script type="text/javascript" src="~/Scripts/ru.js"></script>
+    <script type="text/javascript" src="/Scripts/blockly_compressed.js"></script>
+    <script type="text/javascript" src="/Scripts/blocks_compressed.js"></script>
+    <script type="text/javascript" src="/Scripts/ru.js"></script>
 }
 @section Scripts {
     <script>
         var workspace = Blockly.inject('blocklyDiv',
             {
-                media: '~/Content/media/',
+                media: '/Content/media/',
                 toolbox: `
     <xml>
             <category name="Logic">
@@ -376,5 +374,5 @@
 
 }
 @section Styles {
-    <link rel="stylesheet" href="~/Content/jquery-ui.css" />
+    <link rel="stylesheet" href="/Content/jquery-ui.css" />
 }

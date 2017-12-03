@@ -6,9 +6,8 @@ using System.Web;
 
 namespace BotHunter.Models
 {
-    public class Personality
+        public class Personality: Entity
     {
-        public Guid Id { get; set; }
         [DisplayName("Имя")]
         public string Name { get; set; }
         [DisplayName("Фамилия")]
@@ -19,5 +18,10 @@ namespace BotHunter.Models
         public string Telegram { get; set; }
         [DisplayName("Номер телефона")]
         public string Phone { get; set; }
+
+        static Personality()
+        {
+            GetInstance = () => new Personality();
+        }
     }
 }

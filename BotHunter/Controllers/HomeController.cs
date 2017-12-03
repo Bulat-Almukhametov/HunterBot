@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Web.Security;
+using BotHunter.Models.Infrastructure;
 
 namespace BotHunter.Controllers
 {
@@ -12,14 +14,25 @@ namespace BotHunter.Controllers
     public class HomeController : Controller
     {
         DataRepository _DataRepository;
-        public HomeController(DataRepository repository)
+        IAuthorization _AuthorizeHelper;
+        public HomeController(DataRepository repository, IAuthorization authorizeHelper)
         {
             _DataRepository = repository;
+            _AuthorizeHelper = authorizeHelper;
         }
 
         public ActionResult Index()
         {
-            return View();
+            var currentUser = _AuthorizeHelper.CurrentUser;
+            if (currentUser == null)
+            {
+                return RedirectToAction("Index", "Authorize");
+            }
+            else
+            {
+                ViewBag.UserName = currentUser.Name;
+                return View();
+            }           
         }
 
         public ActionResult Dialog(Guid? Id = null)
@@ -44,10 +57,12 @@ namespace BotHunter.Controllers
             var result = _DataRepository.Dialogs.FirstOrDefault(d => d.Id == dialog.Id);
             if (result == null)
             {
+                dialog.CreatedBy(_AuthorizeHelper.CurrentUser);
                 _DataRepository.Dialogs.Add(dialog);
             }
             else
             {
+                result.ChangedBy(_AuthorizeHelper.CurrentUser);
                 result.Name = dialog.Name;
                 result.Aiml = dialog.Aiml;
                 result.BlocksXml = dialog.BlocksXml;
@@ -93,10 +108,13 @@ namespace BotHunter.Controllers
             var result = _DataRepository.Personalities.FirstOrDefault(d => d.Id == personality.Id);
             if (result == null)
             {
+                personality.CreatedBy(_AuthorizeHelper.CurrentUser);
                 _DataRepository.Personalities.Add(personality);
             }
             else
             {
+                result.ChangedBy(_AuthorizeHelper.CurrentUser);
+
                 result.Name = personality.Name;
                 result.LastName = personality.LastName;
                 result.Phone = personality.Phone;

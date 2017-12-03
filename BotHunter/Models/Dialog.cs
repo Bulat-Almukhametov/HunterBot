@@ -6,13 +6,8 @@ using System.Web;
 
 namespace BotHunter.Models
 {
-    public class Dialog
+    public class Dialog: Entity
     {
-        public Guid Id { get; set; }
-
-        [DisplayName("Создал")]
-        public User Creator { get; set; }
-
         [DisplayName("Название")]
         public string Name { get; set; }
 
@@ -21,5 +16,10 @@ namespace BotHunter.Models
 
         [DisplayName("Сценарий диалога")]
         public string Aiml { get; set; }
+
+        static Dialog()
+        {
+            GetInstance = () => new Dialog();
+        }
     }
 }
