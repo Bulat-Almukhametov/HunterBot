@@ -227,6 +227,14 @@
     <Compile Include="Migrations\201712031336106_CommonEntityNullable.Designer.cs">
       <DependentUpon>201712031336106_CommonEntityNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712031423421_CommonEntityRelated.cs" />
+    <Compile Include="Migrations\201712031423421_CommonEntityRelated.Designer.cs">
+      <DependentUpon>201712031423421_CommonEntityRelated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712031503227_CommonEntityFk.cs" />
+    <Compile Include="Migrations\201712031503227_CommonEntityFk.Designer.cs">
+      <DependentUpon>201712031503227_CommonEntityFk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Infrastructure\DataRepository.cs" />
     <Compile Include="Models\Dialog.cs" />
@@ -306,6 +314,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712031336106_CommonEntityNullable.resx">
       <DependentUpon>201712031336106_CommonEntityNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712031423421_CommonEntityRelated.resx">
+      <DependentUpon>201712031423421_CommonEntityRelated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712031503227_CommonEntityFk.resx">
+      <DependentUpon>201712031503227_CommonEntityFk.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

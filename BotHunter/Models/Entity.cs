@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -14,9 +15,11 @@ namespace BotHunter.Models
         public Guid Id { get; set; }
         [DisplayName("Создатель")]
         public User Creator { get; set; }
+        public Guid? CreatorId { get; set; }
         [DisplayName("Дата создания")]
         public DateTime? CreatedOn { get; set; }
-        [DisplayName("Последний редактор")]
+        [DisplayName("Последний редактор")]       
+        public Guid? LastEditorId { get; set; }
         public User LastEditor { get; set; }
         [DisplayName("Дата изменения")]
         public DateTime? ChangedOn { get; set; }
@@ -26,8 +29,8 @@ namespace BotHunter.Models
         public void CreatedBy(User user)
         {
             this.Id = Guid.NewGuid();
-            this.Creator = user;
-            this.LastEditor = user;
+            this.CreatorId = user.Id;
+            this.LastEditorId = user.Id;
             this.CreatedOn = DateTime.Now;
             this.ChangedOn = DateTime.Now;
         }
@@ -49,7 +52,7 @@ namespace BotHunter.Models
 
         public void ChangedBy(User user)
         {
-            LastEditor = user;
+            LastEditorId = user.Id;
             ChangedOn = DateTime.Now;
         }
 
