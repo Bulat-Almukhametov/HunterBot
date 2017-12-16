@@ -23,7 +23,7 @@
                     var bigNumber = Guid.NewGuid();
                     TempData["BigNumber"] = bigNumber;
                 }
-                    @Html.Hidden("BigNumber", bigNumber)
+                <input type="hidden" id="BigNumber" value=@bigNumber />
                     <div>
                         <input type="text" name="Login" placeholder="Логин" required="" id="login" />
                     </div>
@@ -44,24 +44,7 @@
         </div><!-- container -->
     <script type="text/javascript">
         $(function () {
-            $("#authorizationForm input[type='submit']").click(function (event) {
-                // event.preventDefault();
-
-                //$.ajax({
-                //    method: "POST",
-                //    url: "Login",
-                //    contentType: "application/json",
-                //    dataType: "json",
-                //    data: JSON.stringify({
-                //        "Login": $("#login").val(),
-                //        "HashValue": sha1(sha1($("#password").val()) + $("#BigNumber").val())
-                //    })
-                //}).done(function () {
-                //    window.location.replace("/Home/Index");
-                //});
-
-                //$("#login").val("");
-                //$("#password").val("");
+            $("#authorizationForm input[type='submit']").click(function (event) {            
 
                 $("#HashValue").val(sha1(sha1($("#password").val()) + $("#BigNumber").val()));
             });

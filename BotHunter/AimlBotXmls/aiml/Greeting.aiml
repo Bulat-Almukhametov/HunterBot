@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aiml>
+
+  <category>
+    <pattern>ПРИВЕТ</pattern>
+    <template>
+      <condition>
+        <li name="uzhe_pozdorovalis" value="1">
+          <random>
+            <li>Нравится здороваться? :) </li>
+            <li>Ну давай еще разок.</li>
+            <li>И еще раз здравствуйте. </li>
+            <li>Привет-привет</li>
+            <li>Здороваться можно столько раз, сколько хочется!</li>
+            <li>Вроде здоровались уже.</li>
+          </random>
+        </li>
+        <li>
+          <think>
+            <set name="uzhe_pozdorovalis">1</set>
+          </think>
+          <random>
+            <li>Привет.</li>
+            <li>Здравствуй!</li>
+            <li>Добрый день.</li>
+          </random>
+          Рады приветствовать тебя в компании Навикон.
+        </li>
+      </condition>
+    </template>
+  </category>
+
+
+
+  <category>
+    <pattern>Как дела</pattern>
+    <template>
+      <random>
+        <li> Все отлично!</li>
+        <li> Хорошо. Как у тебя?</li>
+        <li> Я функционирую на все 100% и надежен как Windows XP.</li>
+      </random>
+      
+    </template>
+  </category>
+
+  <category>
+    <pattern>Салют</pattern>
+    <template>
+      <srai>ПРИВЕТ</srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>добрый день</pattern>
+    <template>
+      <srai>ПРИВЕТ</srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>день добрый</pattern>
+    <template>
+      <srai>добрый день</srai>
+    </template>
+  </category>
+
+
+
+
+  <category>
+    <pattern>доброе утро</pattern>
+    <template>
+      <srai>ПРИВЕТ</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>добрый вечер</pattern>
+    <template>
+      <srai>ПРИВЕТ</srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>пока</pattern>
+    <template>
+      <random>
+        <li>Приходи еще.</li>
+        <li>Буду тебя ждать:) </li>
+        <li>Рад был познакомиться. :) </li>
+        <li>До скорой встречи </li>
+        <li>Пока! </li>
+        <li>Ты вернешься? </li>
+      </random>
+    </template>
+  </category>
+
+  <category>
+    <pattern>пока пока</pattern>
+    <template>
+      <srai>пока</srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>до свиданья</pattern>
+    <template>
+      <srai>пока</srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>до свидания</pattern>
+    <template>
+      <srai>до свиданья</srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>До скорого</pattern>
+    <template>
+      <srai>пока</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>превед</pattern>
+    <template>Медвед? </template>
+  </category>
+
+  <category>
+    <pattern>удачи</pattern>
+    <template>Удача штука неплохая! </template>
+  </category>
+
+
+  <category>
+    <pattern>ПРИВЕТИК</pattern>
+    <template>
+      <srai>ПРИВЕТ</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>Салют</pattern>
+    <template>
+      <srai>ПРИВЕТ</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>здравствуйте *</pattern>
+    <template>
+      <srai>здравствуйте</srai>
+      <srai>
+        <star/>
+      </srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>здравствуйте</pattern>
+    <template>
+      <srai>ПРИВЕТ</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>здравствуйте *</pattern>
+    <template>
+      <srai>здравствуйте</srai>
+      <srai>
+        <star/>
+      </srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>здравствуй</pattern>
+    <template>
+      <srai>ПРИВЕТ</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>добрый день</pattern>
+    <template>
+      <srai>ПРИВЕТ</srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>день добрый</pattern>
+    <template>
+      <srai>добрый день</srai>
+    </template>
+  </category>
+
+
+
+
+  <category>
+    <pattern>доброе утро</pattern>
+    <template>
+      <srai>ПРИВЕТ</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>добрый вечер</pattern>
+    <template>
+      <srai>ПРИВЕТ</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>доброй ночи</pattern>
+    <template>
+      <srai>ПРИВЕТ</srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>как настроение</pattern>
+    <template>
+      <random>
+        <li>Ничего так.</li>
+        <li>Отлично. Весна скоро :)</li>
+        <li>Суперски.</li>
+      </random>
+    </template>
+  </category>
+  
+  
+  
+
+</aiml>

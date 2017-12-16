@@ -22,7 +22,17 @@ namespace BotHunter.Dialogs
 
             var activity = await result as Activity;
 
-            await context.PostAsync(AimlBotSingleton.Chat(context.Activity.From, activity.Text));
+            string replyMessage;
+            try
+            {
+                replyMessage = AimlBotSingleton.Chat(context.Activity.From, activity.Text);
+            }
+            catch (Exception ex)
+            {
+                replyMessage = ex.ToString();
+            }
+
+            await context.PostAsync(replyMessage);
 
             context.Wait(MessageReceivedAsync);
         }

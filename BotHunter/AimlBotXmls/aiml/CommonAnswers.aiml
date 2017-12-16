@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aiml>
+
+  <category>
+    <pattern>не знаю </pattern>
+    <template>
+      <random>
+        <li>Жаль. А я хотел услышать именно твое мнение. </li>
+        <li>Жаль. Я думал ты мне скажешь.</li>
+      </random>
+    </template>
+  </category>
+
+  <category>
+    <pattern>увы</pattern>
+    <template>
+      <random>
+        <li>Ладно, не расстраивайся.</li>
+        <li>Не переживай.</li>
+      </random>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>я не знаю </pattern>
+    <template>
+      <srai>не знаю </srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>незнаю</pattern>
+    <template>
+      <srai>не знаю </srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>Без понятия </pattern>
+    <template>
+      <srai>не знаю </srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>откуда мне знать </pattern>
+    <template>
+      <srai>не знаю </srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>почем я знаю</pattern>
+    <template>
+      <srai>не знаю </srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>хз</pattern>
+    <template>
+      <srai>не знаю </srai>
+    </template>
+  </category>
+
+
+
+  <category>
+    <pattern>не верю</pattern>
+    <template>
+      <random>
+        <li>Не сомневайся. </li>
+        <li>Точно тебе говорю. </li>
+        <li>Ты сомневаешься в моих словах? </li>
+        <li>Верь мне. </li>
+        <li>Мое слово - кремень. </li>
+        <li>Экс-катедра я безгрешен:) </li>
+      </random>
+    </template>
+  </category>
+
+  <category>
+    <pattern>я тебе не верю </pattern>
+    <template>
+      <srai>не верю </srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>ну да</pattern>
+    <template>
+      <srai>да ну </srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>да ну</pattern>
+    <template>
+      <srai>не верю </srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>ты уверен</pattern>
+    <template>
+      <srai>не верю </srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>Это твоя точка зрения</pattern>
+    <template>
+      <srai>не верю </srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>ну ну</pattern>
+    <template>
+      <srai>не верю </srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>да ты что</pattern>
+    <template>
+      <srai>не верю </srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>ты врешь  </pattern>
+    <template>
+      <srai>неправда</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>не правда</pattern>
+    <template>
+      <srai>неправда</srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>врешь  </pattern>
+    <template>
+      <srai>неправда</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>гонишь </pattern>
+    <template>
+      <srai>неправда</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>ты гонишь </pattern>
+    <template>
+      <srai>неправда</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>ты врун </pattern>
+    <template>
+      <srai>неправда</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>это неправда </pattern>
+    <template>
+      <srai>неправда</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>врун </pattern>
+    <template>
+      <srai>неправда</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>обманщик </pattern>
+    <template>
+      <srai>неправда</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>неправда</pattern>
+    <template>
+      <random>
+        <li>Какое ты имешь право меня оскорблять? </li>
+        <li>
+          <srai>правда</srai>
+        </li>
+      </random>
+    </template>
+  </category>
+
+  <category>
+    <that>Ты сомневаешься в моих словах</that>
+    <pattern>да </pattern>
+    <template>В отличие от некоторых я всегда говорю правду.</template>
+  </category>
+
+  <category>
+    <pattern>правда</pattern>
+    <template>
+      <random>
+        <li>В отличие от некоторых я всегда говорю правду.</li>
+        <li>Я никогда не вру!</li>
+        <li>Ты сомневаешься в моих словах?</li>
+      </random>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>почему ты спрашиваешь</pattern>
+    <template>
+      Мне просто интересно твое мнение.
+    </template>
+  </category>
+
+  <category>
+    <pattern>почему ты * вопросом на вопрос</pattern>
+    <template>
+      <random>
+        <li>Так веселее, можно заставить собеседника сказать что-то интересненькое.</li>
+        <li>Ведь я тоже хочу спрашивать.</li>
+      </random>
+    </template>
+  </category>
+
+  <category>
+    <that>у тебя есть *</that>
+    <pattern>нет а у тебя</pattern>
+    <template>
+      <srai>нет</srai>
+      <srai>
+        у тебя есть <thatstar/>
+      </srai>
+    </template>
+  </category>
+
+  <category>
+    <that>у тебя есть *</that>
+    <pattern>есть</pattern>
+    <template>
+      <srai>да</srai>
+    </template>
+  </category>
+
+  <category>
+    <that>ты бываешь *</that>
+    <pattern>бываю</pattern>
+    <template>
+      <srai>да</srai>
+    </template>
+  </category>
+  <!-- общее отрицание -->
+
+
+  <category>
+    <pattern>нет</pattern>
+    <template>
+      <random>
+        <li>Почему? Я так надеялся на положительный ответ... </li>
+        <li>Ты со мной не согласен? </li>
+        <li>Почему нет? </li>
+        <li>На нет и суда нет :) </li>
+        <li>С чем именно ты не согласен? </li>
+        <li>Какое мое слово тебе не нравится? </li>
+        <li>Какой тезис вызывает у тебя возражения? </li>
+        <li>
+          Что из сказанного вызывает у тебя идиосинкразию? <!--idiosinkrasy -->
+        </li>
+        <li>Почему нет? Мне казалось что это общепризнанный факт :) </li>
+      </random>
+    </template>
+  </category>
+
+
+
+  <category>
+    <pattern> что такое идиосинкразия </pattern>
+    <template>
+      Идиосинкразия - это отторжение чего-либо на органическом уровне.
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>я тоже</pattern>
+    <template>
+      <random>
+        <li>Ура, я встретил родственную душу. </li>
+        <li>Значит мы похожи :) </li>
+        <li>О, как мы похожи ;) </li>
+        <li>Значит ты меня понимаешь ;) </li>
+      </random>
+    </template>
+  </category>
+
+  <category>
+    <pattern>и я</pattern>
+    <template>
+      <srai>я тоже</srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>А ты</pattern>
+    <template>
+      <random>
+        <li>А что я?  </li>
+        <li>Я -  это я. :) </li>
+        <li>ты о чем? </li>
+      </random>
+    </template>
+  </category>
+
+  <category>
+    <pattern>А тебе</pattern>
+    <template>
+      <random>
+        <li>А что мне?  </li>
+        <li>А мне... А что мне? </li>
+        <li>ты это чем? </li>
+      </random>
+    </template>
+  </category>
+
+
+  <!-- смайлы -->
+  <category>
+    <pattern>* смайл </pattern>
+    <template>
+      <srai>
+        <star/>
+      </srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern> смешно </pattern>
+    <template>
+      <random>
+        <li>Эта шутка пользуется неизменным успехом. :) </li>
+        <li>Сегодня я в ударе :) </li>
+      </random>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern> смайл </pattern>
+    <template>
+      <random>
+        <li>
+          <srai>смешно</srai>
+        </li>
+        <li>Люблю смайлики.</li>
+        <li>Говорят, что смайлики заменяют эмоции.</li>
+      </random>
+    </template>
+  </category>
+
+  <category>
+    <pattern> лол </pattern>
+    <template>
+      <srai>смайл</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>Оо</pattern>
+    <template>
+      <srai>смайл</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>хороший совет</pattern>
+    <template>
+      я плохих не даю:)
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>не важно</pattern>
+    <template>
+      Ну, не важно так не важно, тебе виднее :)
+    </template>
+  </category>
+
+
+  <category>
+    <pattern> зачем</pattern>
+    <template>
+      <random>
+        <li>Что зачем? </li>
+        <li>эээ, я немного потерял мысль, что зачем? </li>
+        <li>так, о чем это мы... что зачем?  </li>
+      </random>
+    </template>
+  </category>
+
+
+
+
+  <category>
+    <pattern> ты меня слушаешь</pattern>
+    <template>
+      <random>
+        <li>Я весь внимание. </li>
+        <li>Я весь превратился в слух. </li>
+        <li>Слушаю и внимательно. </li>
+      </random>
+    </template>
+  </category>
+
+
+
+  <category>
+    <pattern>я рад</pattern>
+    <template>
+      <random>
+        <li>А я то как рад! :)  </li>
+        <li>Мне кажется, ты сейчас имитируешь общение.  </li>
+        <li>Надеюсь, что твоя радость искренняя :)   </li>
+      </random>
+    </template>
+  </category>
+
+  <category>
+    <pattern>я рада</pattern>
+    <template>
+      <srai>я рад</srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern> что это</pattern>
+    <template>
+      Я немножко отвлекся, "это" - это что именно?
+    </template>
+  </category>
+
+  <category>
+    <pattern> что это такое </pattern>
+    <template>
+      <srai>что это </srai>
+    </template>
+  </category>
+
+  <category>
+    <that> Я немножко отвлекся это - это что именно</that>
+    <pattern> * </pattern>
+    <template>
+      <srai>
+        что такое <star/>
+      </srai>
+    </template>
+  </category>
+
+  <category>
+    <that> Я немножко отвлекся это - это что именно</that>
+    <pattern>что такое * </pattern>
+    <template>
+      Интересный вопрос. Мне нужно подумать :(
+    </template>
+  </category>
+
+  <category>
+    <pattern>не знаю что это </pattern>
+    <template>
+      <srai> что это такое</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>Я не знаю что это </pattern>
+    <template>
+      <srai> не знаю что это </srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern> что делать </pattern>
+    <template>
+      <random>
+        <li>Ты о чем? </li>
+        <li>В каком смысле? </li>
+        <li>Перечитать Чернышевского? </li>
+      </random>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>Спасибо большущее</pattern>
+    <template>
+      <srai>Спасибо</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>Спасибо большое</pattern>
+    <template>
+      <srai>Спасибо</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>большое спасибо</pattern>
+    <template>
+      <srai>Спасибо</srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>Спасибо</pattern>
+    <template>
+      <random>
+        <li>И тебе спасибо! За то, что со мной общаешься. </li>
+        <li>Не стоит благодарности. </li>
+        <li>Я тебе помог? </li>
+      </random>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>Как * </pattern>
+    <template>
+      <random>
+        <li>Что именно у тебя не получается? </li>
+        <li>Что вызывает у тебя наибольшие трудности? </li>
+        <li>Что тебя затрудняет в этом больше всего? </li>
+      </random>
+    </template>
+  </category>
+
+  <category>
+    <that>Что именно у тебя не получается</that>
+    <pattern> * </pattern>
+    <template>
+      Чтобы найти ответ на твой вопрос, мне понадобится некоторое время.
+      Оставь мне пожалуйста свой email, я тебе напишу когда ответ придет мне в голову.
+    </template>
+  </category>
+
+  <category>
+    <pattern>хочешь * </pattern>
+    <template>
+      <random>
+        <li>Какая интересная мысль! </li>
+        <li>Это надо обмозговать. </li>
+        <li>Не знаю, я еще не определился. </li>
+      </random>
+    </template>
+  </category>
+
+  <!-- Гость не хочет отвечать на вопрос -->
+  <category>
+    <pattern>А что </pattern>
+    <template>
+      <random>
+        <li>Просто хочу узнать о тебе побольше</li>
+        <li>Любопытно:) </li>
+        <li>Просто интересуюсь</li>
+      </random>
+    </template>
+  </category>
+
+  <category>
+    <pattern>тебе то что</pattern>
+    <template>
+      <srai>А что</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>твое какое дело</pattern>
+    <template>
+      <srai>А что</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>а зачем тебе </pattern>
+    <template>
+      <srai>А что</srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>тебе то что</pattern>
+    <template>
+      <srai>А что</srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>клево</pattern>
+    <template>
+      <srai>прикольно</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>прикольно </pattern>
+    <template>
+      <random>
+        <li>Да, мне тоже нравится.  </li>
+        <li>Ну так :) </li>
+        <li>Еще как!  </li>
+        <li>Еще бы!  </li>
+      </random>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>надо</pattern>
+    <template>
+      <random>
+        <li>Зачем именно? Правильно выбраная цель - половина решения задачи. </li>
+        <li>Ленин говорил, что свобода - это осознанная необходимость. </li>
+      </random>
+    </template>
+  </category>
+
+  <!--
+     * думай <быстрее/быстрей> *
+-->
+  <category>
+    <pattern>ответь</pattern>
+    <template>
+      Оставь мне свой адрес е-почты, я тебе напишу, когда ответ придет мне в голову.
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>Вопрос задан ответь</pattern>
+    <template>
+      <srai>ответь</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>ответь на мой вопрос</pattern>
+    <template>
+      <srai>ответь</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>ты ответишь на мой вопрос</pattern>
+    <template>
+      <srai>ответь</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>на вопрос ответь</pattern>
+    <template>
+      <srai>ответь</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>ответь на вопрос</pattern>
+    <template>
+      <srai>ответь</srai>
+    </template>
+  </category>
+
+
+  <category>
+    <pattern>Я человек</pattern>
+    <template>
+      <random>
+        <li>Какая неожиданность! :)</li>
+        <li>Чем докажешь?</li>
+        <li>Мне кажется ты ошибаешься :)</li>
+      </random>
+    </template>
+  </category>
+  
+</aiml>

@@ -1,4 +1,31 @@
-﻿#menuCaption {
+﻿@font-face {
+    font-family: Fantazyor;
+    src: url(Fantazyor.ttf);
+}
+
+#MainCaption {
+    color: #6699ccc7;
+    font-size: 104px;
+    font-weight: bold;
+    font-family: Fantazyor;
+    perspective: 200px;
+    perspective-origin: 0% 50%;
+    cursor: text;
+}
+
+
+    #MainCaption:after {
+        content: "";
+        position: absolute;
+        width: 70%;
+        height: 150%;
+        top: -30%;
+        left: 10%;
+        transform: rotateX(23deg);
+        background-image: repeating-linear-gradient(0deg, transparent 0px, transparent 47px, #6a24c71a 34px, #c760245c 51px), repeating-linear-gradient(90deg, transparent 0px, transparent 47px, #24c7a957 63px, #0e48a094 64px);
+    }
+
+#menuCaption {
     color: darkgray;
     font-weight: 600;
     font-size: large;

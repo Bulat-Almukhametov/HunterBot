@@ -14,13 +14,15 @@ namespace BotHunter.App_Start
         static AimlBotSingleton()
         {
             _AimlBot = new Bot();
-            var path = HttpContext.Current.Server.MapPath("~/bin");
-            _AimlBot.UpdatedConfigDirectory = path + @"/config";
-            _AimlBot.UpdatedAimlDirectory = path + @"/aiml";
+            var path = HttpContext.Current.Server.MapPath("~/");
+            _AimlBot.loadCustomTagHandlers(path + @"bin/AimlTags.dll");
+            _AimlBot.UpdatedConfigDirectory = path + @"AimlBotXmls/config";
+            _AimlBot.UpdatedAimlDirectory = path + @"AimlBotXmls/aiml";
             _AimlBot.loadSettings();
             _AimlBot.isAcceptingUserInput = false;
             _AimlBot.loadAIMLFromFiles();
             _AimlBot.isAcceptingUserInput = true;
+            
 
             _Users = new Dictionary<string, User>();
         }

@@ -148,6 +148,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AimlBotXmls\aiml\Greeting.aiml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="AimlBotXmls\config\DefaultPredicates.xml" />
     <Content Include="AimlBotXmls\config\GenderSubstitutions.xml" />
     <Content Include="AimlBotXmls\config\Person2Substitutions.xml" />
@@ -182,9 +185,18 @@
     <Content Include="Content\media\disconnect.ogg" />
     <Content Include="Content\foundation-icons.ttf" />
     <Content Include="Content\foundation-icons.woff" />
-    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <Content Include="AimlBotXmls\aiml\CommonAnswers.aiml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\Fantazyor.ttf" />
+    <Content Include="AimlBotXmls\aiml\AboutMe.aiml">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Properties\PublishProfiles\BotHunter20171205100102 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\blockly_blocks.js" />
     <Content Include="Scripts\blockly_compressed.js" />
+    <Content Include="Scripts\blockly_workspace.js" />
     <Content Include="Scripts\blocks_compressed.js" />
     <Content Include="Scripts\foundation.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -251,38 +263,6 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="AimlBotXmls\aiml\AI.aiml" />
-    <Content Include="AimlBotXmls\aiml\Atomic.aiml" />
-    <Content Include="AimlBotXmls\aiml\Biography.aiml" />
-    <Content Include="AimlBotXmls\aiml\Bot.aiml" />
-    <Content Include="AimlBotXmls\aiml\Botmaster.aiml" />
-    <Content Include="AimlBotXmls\aiml\Client.aiml" />
-    <Content Include="AimlBotXmls\aiml\Computers.aiml" />
-    <Content Include="AimlBotXmls\aiml\CustomTagTest.aiml" />
-    <Content Include="AimlBotXmls\aiml\Default.aiml" />
-    <Content Include="AimlBotXmls\aiml\Emotion.aiml" />
-    <Content Include="AimlBotXmls\aiml\Food.aiml" />
-    <Content Include="AimlBotXmls\aiml\Geography.aiml" />
-    <Content Include="AimlBotXmls\aiml\History.aiml" />
-    <Content Include="AimlBotXmls\aiml\Inquiry.aiml" />
-    <Content Include="AimlBotXmls\aiml\Interjection.aiml" />
-    <Content Include="AimlBotXmls\aiml\IU.aiml" />
-    <Content Include="AimlBotXmls\aiml\Knowledge.aiml" />
-    <Content Include="AimlBotXmls\aiml\Literature.aiml" />
-    <Content Include="AimlBotXmls\aiml\Money.aiml" />
-    <Content Include="AimlBotXmls\aiml\Movies.aiml" />
-    <Content Include="AimlBotXmls\aiml\Music.aiml" />
-    <Content Include="AimlBotXmls\aiml\Personality.aiml" />
-    <Content Include="AimlBotXmls\aiml\Philosophy.aiml" />
-    <Content Include="AimlBotXmls\aiml\Pickup.aiml" />
-    <Content Include="AimlBotXmls\aiml\Predicates.aiml" />
-    <Content Include="AimlBotXmls\aiml\Reduce.aiml" />
-    <Content Include="AimlBotXmls\aiml\Reductions.aiml" />
-    <Content Include="AimlBotXmls\aiml\Salutations.aiml" />
-    <Content Include="AimlBotXmls\aiml\Science.aiml" />
-    <Content Include="AimlBotXmls\aiml\Stack.aiml" />
-    <Content Include="AimlBotXmls\aiml\Stories.aiml" />
-    <Content Include="AimlBotXmls\aiml\That.aiml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -322,6 +302,12 @@
       <DependentUpon>201712031503227_CommonEntityFk.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AimlTags\AimlTags.csproj">
+      <Project>{507cc580-67d2-4fc0-ab75-a4345a8e6b96}</Project>
+      <Name>AimlTags</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -351,7 +337,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /s /y "$(ProjectDir)AimlBotXmls" "$(TargetDir)"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

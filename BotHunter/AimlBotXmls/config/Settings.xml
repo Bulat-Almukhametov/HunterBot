@@ -11,9 +11,9 @@
   <item name="substitutionsfile" value="Substitutions.xml"/>
   <item name="maxlogbuffersize" value="64"/>
   <item name="notacceptinguserinputmessage" value="This bot is currently set to not accept user input."/>
-  <item name="stripperregex" value="[^0-9a-zA-Z]"/>
+  <item name="stripperregex" value="[^0-9a-zA-Zа-яА-я]"/>
   <item name="version" value="Unknown"/>
-  <item name="name" value="Damir"/>
+  <item name="name" value="Наталия"/>
   <item name="botmaster" value="Bulat"/>
   <item name="master" value="Unknown"/>
   <item name="author" value="Nicholas H.Tollervey"/>
