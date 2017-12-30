@@ -2,10 +2,6 @@
     init: function () {
         this.appendDummyInput()
             .appendField("Диалог");
-        this.appendValueInput("NAME")
-            .setCheck("Topic")
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField("тема");
         this.appendStatementInput("Pattern")
             .setCheck("Pattern")
             .appendField("Пользователь");
@@ -166,8 +162,11 @@ Blockly.Blocks['condition'] = {
 Blockly.Blocks['topic'] = {
     init: function () {
         this.appendDummyInput()
+            .appendField("Перейти к теме");
+        this.appendDummyInput()
             .appendField(new Blockly.FieldTextInput("название темы"), "NAME");
-        this.setOutput(true, "Topic");
+        this.setPreviousStatement(true, "Template");
+        this.setNextStatement(true, "Template");
         this.setColour(0);
         this.setTooltip("");
         this.setHelpUrl("");
@@ -176,96 +175,106 @@ Blockly.Blocks['topic'] = {
 
 
 /***************************     Генератор        ******************************/
-Blockly.Aiml = new Blockly.Generator('Aiml');
 
-Blockly.Aiml['category'] = function (block) {
-    var value_name = Blockly.Aiml.valueToCode(block, 'NAME');
-    var statements_pattern = Blockly.Aiml.statementToCode(block, 'Pattern');
-    var statements_template = Blockly.Aiml.statementToCode(block, 'Template');
-    // TODO: Assemble Aiml into code variable.
-    var code = '...;\n';
-    return code;
+Blockly.JavaScript['category'] = function (block) {
+    var statements_pattern = Blockly.JavaScript.statementToCode(block, 'Pattern');
+    var statements_template = Blockly.JavaScript.statementToCode(block, 'Template');
+    
+    var code = `
+<category>
+    <pattern> ` + statements_pattern + ` </pattern>
+    <template>
+        ` + statements_template + `
+    </template>
+</category >
+`;
+    if (statements_pattern && statements_template)
+        return code;
+    else return "";
 };
 
-Blockly.Aiml['user_text'] = function (block) {
+Blockly.JavaScript['user_text'] = function (block) {
     var text_text = block.getFieldValue('text');
-    // TODO: Assemble Aiml into code variable.
-    var code = '...;\n';
+    
+    var code = text_text;
     return code;
 };
 
-Blockly.Aiml['bot_text'] = function (block) {
+Blockly.JavaScript['bot_text'] = function (block) {
     var text_text = block.getFieldValue('text');
-    // TODO: Assemble Aiml into code variable.
-    var code = '...;\n';
+
+    var code = text_text;
     return code;
 };
 
-Blockly.Aiml['star'] = function (block) {
+Blockly.JavaScript['star'] = function (block) {
     var dropdown_indecs = block.getFieldValue('indecs');
-    // TODO: Assemble Aiml into code variable.
-    var code = '...;\n';
+
+    var code = '<star index = "' + dropdown_indecs + '"/>';
     return code;
 };
 
-Blockly.Aiml['srai'] = function (block) {
-    var statements_template = Blockly.Aiml.statementToCode(block, 'Template');
-    // TODO: Assemble Aiml into code variable.
-    var code = '...;\n';
+Blockly.JavaScript['srai'] = function (block) {
+    var statements_template = Blockly.JavaScript.statementToCode(block, 'Template');
+    var code = '<srai>\n' + statements_template + '\n</srai>\n';
     return code;
 };
 
-Blockly.Aiml['random'] = function (block) {
-    var statements_variants = Blockly.Aiml.statementToCode(block, 'variants');
-    // TODO: Assemble Aiml into code variable.
-    var code = '...;\n';
+Blockly.JavaScript['random'] = function (block) {
+    var statements_variants = Blockly.JavaScript.statementToCode(block, 'variants');
+    
+    var code = '<random>\n' + statements_variants + '</random>\n';
     return code;
 };
 
-Blockly.Aiml['random_el'] = function (block) {
+Blockly.JavaScript['random_el'] = function (block) {
     var text_text = block.getFieldValue('text');
-    // TODO: Assemble Aiml into code variable.
-    var code = '...;\n';
+
+    var code = '<li>' + text_text + '</li>\n';
     return code;
 };
 
-Blockly.Aiml['set'] = function (block) {
+Blockly.JavaScript['set'] = function (block) {
     var text_var = block.getFieldValue('VAR');
     var text_val = block.getFieldValue('VAL');
-    // TODO: Assemble Aiml into code variable.
-    var code = '...;\n';
+   
+    var code = '<set name = "' + text_var +'"> ' + text_val +' </set>\n';
     return code;
 };
 
-Blockly.Aiml['get'] = function (block) {
+Blockly.JavaScript['get'] = function (block) {
     var text_name = block.getFieldValue('NAME');
     var dropdown_vartype = block.getFieldValue('vartype');
-    // TODO: Assemble Aiml into code variable.
-    var code = '...;\n';
+    var code = "";
+
+    if (dropdown_vartype == "var")
+        code = '<get name = "' + text_name + '"></get>\n';
+    else if (dropdown_vartype == "bot")
+        code = '<bot name = "' + text_name + '"/>\n';
+
     return code;
 };
 
-Blockly.Aiml['think'] = function (block) {
-    var statements_blocks = Blockly.Aiml.statementToCode(block, 'blocks');
-    // TODO: Assemble Aiml into code variable.
-    var code = '...;\n';
+Blockly.JavaScript['think'] = function (block) {
+    var statements_blocks = Blockly.JavaScript.statementToCode(block, 'blocks');
+    
+    var code = '<think>\n' + statements_blocks + '\n</think>\n';
     return code;
 };
 
-Blockly.Aiml['condition'] = function (block) {
+Blockly.JavaScript['condition'] = function (block) {
     var text_var = block.getFieldValue('VAR');
     var text_val = block.getFieldValue('VAL');
-    var statements_conditions = Blockly.Aiml.statementToCode(block, 'conditions');
-    // TODO: Assemble Aiml into code variable.
-    var code = '...;\n';
+    var statements_conditions = Blockly.JavaScript.statementToCode(block, 'conditions');
+    
+    var code = '<condition name="' + text_var + '" value="' + text_val + '">\n' + statements_conditions + '\n</condition >\n';
     return code;
 };
 
-Blockly.Aiml['topic'] = function (block) {
+Blockly.JavaScript['topic'] = function (block) {
     var text_name = block.getFieldValue('NAME');
-    // TODO: Assemble Aiml into code variable.
-    var code = '...';
-    // TODO: Change ORDER_NONE to the correct strength.
-    return [code];
+    
+    var code = '<think> <set name="topic">' + text_name + '</think>\n';
+    return code;
 };
 

@@ -68,6 +68,7 @@ namespace BotHunter.Controllers
                 result.BlocksXml = dialog.BlocksXml;
 
                 _DataRepository.Dialogs.Attach(result);
+                _DataRepository.Entry(result).State = EntityState.Modified;
             }
 
             _DataRepository.SaveChanges();
@@ -122,6 +123,7 @@ namespace BotHunter.Controllers
                 result.Email = personality.Email;
 
                 _DataRepository.Personalities.Attach(result);
+                _DataRepository.Entry(result).State = EntityState.Modified;
             }
 
             _DataRepository.SaveChanges();

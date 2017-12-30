@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace BotHunter.Models
 {
@@ -12,9 +13,11 @@ namespace BotHunter.Models
         public string Name { get; set; }
 
         [DisplayName("Структура блоков")]
+        [AllowHtml]
         public string BlocksXml { get; set; }
 
         [DisplayName("Сценарий диалога")]
+        [AllowHtml]
         public string Aiml { get; set; }
 
         static Dialog()

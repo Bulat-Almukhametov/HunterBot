@@ -194,11 +194,13 @@
     </Content>
     <None Include="Properties\PublishProfiles\BotHunter20171205100102 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\ace.js" />
     <Content Include="Scripts\blockly_blocks.js" />
     <Content Include="Scripts\blockly_compressed.js" />
     <Content Include="Scripts\blockly_workspace.js" />
     <Content Include="Scripts\blocks_compressed.js" />
     <Content Include="Scripts\foundation.js" />
+    <Content Include="Scripts\blockly_javascript.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -206,9 +208,12 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\mode-xml.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ru.js" />
     <Content Include="Scripts\sha1.js" />
+    <Content Include="Scripts\theme-iplastic.js" />
+    <Content Include="Scripts\worker-xml.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

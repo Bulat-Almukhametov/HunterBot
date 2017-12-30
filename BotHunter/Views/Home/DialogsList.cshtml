@@ -29,7 +29,7 @@
                 @Html.ActionLink(item.Name, "Dialog", new { id = item.Id })
             </td>
             <td>
-                Html.ActionLink(item.Creator.Name, "Creator", new { id = item.Creator.Id })
+                @item.Creator.Name
             </td>
             <td>
                 @Html.ActionLink("Просмотр", "Dialog", new { id = item.Id }, new { @class = "button" })
