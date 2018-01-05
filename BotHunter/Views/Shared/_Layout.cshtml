@@ -7,7 +7,8 @@
     <title>Редактор бота - @ViewBag.Title</title>
     <link rel="stylesheet" href="~/Content/foundation.css" />
     <link rel="stylesheet" href="~/Content/Site.css" />
-    @RenderSection("styles", required: false)
+        @RenderSection("styles", required: false)
+        @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("topScripts", required: false)
 
@@ -67,11 +68,9 @@
     </section>
     <hr />
     <footer class="bottom margin-left-3 margin-right-3">
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <p> <span class="font-bold">&copy; NAVICONCAREER</span> BOT <span><i class="fi-wrench" style="color: dodgerblue;"></i></span>SETTINGS  —  @DateTime.Now.ToString("ddd, d MMM yyyy", new System.Globalization.CultureInfo("ru-RU"))</p>
     </footer>
 
-
-    @Scripts.Render("~/bundles/jquery")
     <script src="~/Scripts/foundation.js"></script>
     <script>
         $(document).foundation();

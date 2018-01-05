@@ -55,6 +55,9 @@
     <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.1.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="Chronic, Version=0.3.2.0, Culture=neutral, PublicKeyToken=3bd1f1ef638b0d3c, processorArchitecture=MSIL">
       <HintPath>$(SolutionDir)\packages\Chronic.Signed.0.3.2\lib\net40\Chronic.dll</HintPath>
     </Reference>
@@ -101,6 +104,7 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -158,9 +162,14 @@
     <Content Include="AimlBotXmls\config\Settings.xml" />
     <Content Include="AimlBotXmls\config\Splitters.xml" />
     <Content Include="AimlBotXmls\config\Substitutions.xml" />
+    <Content Include="Content\32px.png" />
+    <Content Include="Content\40px.png" />
     <Content Include="Content\Authorize.css" />
     <Content Include="Content\bot.jpg" />
+    <Content Include="Content\Document_Folder_blue.png" />
+    <Content Include="Content\experience.png" />
     <Content Include="Content\foundation.css" />
+    <Content Include="Content\hr.png" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\media\1x1.gif" />
     <Content Include="Content\media\click.mp3" />
@@ -176,7 +185,11 @@
     <Content Include="Content\media\quote1.png" />
     <Content Include="Content\media\sprites.png" />
     <Content Include="Content\media\sprites.svg" />
+    <Content Include="Content\office.png" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\jstree.css" />
+    <Content Include="Content\throbber.gif" />
+    <Content Include="Content\topic_ico.png" />
     <Content Include="Global.asax" />
     <Content Include="Gulpfile.js" />
     <Content Include="package.json" />
@@ -204,10 +217,13 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.populate.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jstree.js" />
     <Content Include="Scripts\mode-xml.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ru.js" />
@@ -228,6 +244,7 @@
     <Compile Include="Controllers\AuthorizeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\TopicController.cs" />
     <Compile Include="Dialogs\RootDialog.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -252,7 +269,20 @@
     <Compile Include="Migrations\201712031503227_CommonEntityFk.Designer.cs">
       <DependentUpon>201712031503227_CommonEntityFk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801022003450_Create_DialogTopic.cs" />
+    <Compile Include="Migrations\201801022003450_Create_DialogTopic.Designer.cs">
+      <DependentUpon>201801022003450_Create_DialogTopic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801031830549_AddTypeToTopic.cs" />
+    <Compile Include="Migrations\201801031830549_AddTypeToTopic.Designer.cs">
+      <DependentUpon>201801031830549_AddTypeToTopic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801041231056_Change_TopicTypeToEnum.cs" />
+    <Compile Include="Migrations\201801041231056_Change_TopicTypeToEnum.Designer.cs">
+      <DependentUpon>201801041231056_Change_TopicTypeToEnum.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DialogTopic.cs" />
     <Compile Include="Models\Infrastructure\DataRepository.cs" />
     <Compile Include="Models\Dialog.cs" />
     <Compile Include="Models\Entity.cs" />
@@ -260,6 +290,7 @@
     <Compile Include="Models\Infrastructure\IAuthorization.cs" />
     <Compile Include="Models\Personality.cs" />
     <Compile Include="Models\Skill.cs" />
+    <Compile Include="Models\TopicType.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserCredentials.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -280,6 +311,7 @@
     <Content Include="Views\Home\Personality.cshtml" />
     <Content Include="Views\Home\SkillsList.cshtml" />
     <Content Include="Views\Authorize\Index.cshtml" />
+    <Content Include="Views\Topic\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -305,6 +337,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712031503227_CommonEntityFk.resx">
       <DependentUpon>201712031503227_CommonEntityFk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801022003450_Create_DialogTopic.resx">
+      <DependentUpon>201801022003450_Create_DialogTopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801031830549_AddTypeToTopic.resx">
+      <DependentUpon>201801031830549_AddTypeToTopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801041231056_Change_TopicTypeToEnum.resx">
+      <DependentUpon>201801041231056_Change_TopicTypeToEnum.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

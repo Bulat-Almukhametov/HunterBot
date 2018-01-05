@@ -19,6 +19,9 @@ namespace BotHunter.Models
         [DisplayName("Сценарий диалога")]
         [AllowHtml]
         public string Aiml { get; set; }
+        [DisplayName("Тема")]
+        public DialogTopic Topic { get; set; }
+        public Guid? TopicId { get; set; }
 
         static Dialog()
         {

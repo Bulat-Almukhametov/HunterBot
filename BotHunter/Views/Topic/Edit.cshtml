@@ -1,0 +1,125 @@
+﻿@model BotHunter.Models.DialogTopic
+<div id="topicModalbox" title="Тема диалога">
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "topicForm" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "alert-box alert" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ParentId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @{ var parentName = Model.Parent != null ? Model.Parent.Name : "";}
+                    <input type="text" value="@parentName" disabled id="ParentName" name="ParentName" />
+                    @Html.HiddenFor(model => model.ParentId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "alert-box alert" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "alert-box alert" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.Type, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Type, "", new { @class = "alert-box alert" })
+                </div>
+            </div>
+        </div>
+
+                        }
+</div>
+
+
+<script type="text/javascript">
+
+    function submitTopic() {
+
+        $.fn.serializeFormJSON = function () {
+
+            var o = {};
+            var a = this.serializeArray();
+            $.each(a, function () {
+                if (o[this.name]) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
+        };
+
+        
+
+        $.ajax({
+            type: "POST",
+            url: "/Topic/Edit",
+            data: $("#topicForm").serialize(),
+            success: function (data) {
+                if (data.success) {
+                    var tree = $("#topics").jstree(true);
+                    var formData = $("#topicForm").serializeFormJSON();
+                    var node = tree.get_node(tree.get_selected());
+
+                    tree.rename_node(tree.get_selected(), formData.Name);
+                    tree.set_type(tree.get_selected(), formData.Type);
+                    node.data = formData;
+
+                    window.topicModalbox.dialog("close");
+                    $("#" + tree.get_selected() + "_anchor").attr("title", formData.Description);
+                }
+                else {
+                    console.error("Ошибка при сохранении темы диалога: ", data.error);
+                }
+            },
+            error: function (data) {
+                console.error("Ошибка при обращению к серверу: ", data);
+            }
+        });
+
+    }
+
+    function resetTopic() {
+        window.topicModalbox.dialog("close");
+    }
+    
+
+    window.topicModalbox = $("#topicModalbox").dialog({
+        autoOpen: false,
+        height: 400,
+        width: 350,
+        modal: true,
+        buttons: {
+            "Применить": submitTopic,
+            "Отмена": resetTopic
+        },
+        close: function () {
+            $(document).tooltip();
+            var tree = $("#topics").jstree(true);
+            var node = tree.get_node(tree.get_selected());
+            if (!node.data) {
+                tree.delete_node(node.id);
+            }
+        }
+    });
+</script>

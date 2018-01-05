@@ -66,6 +66,7 @@ namespace BotHunter.Controllers
                 result.Name = dialog.Name;
                 result.Aiml = dialog.Aiml;
                 result.BlocksXml = dialog.BlocksXml;
+                result.TopicId = dialog.TopicId;
 
                 _DataRepository.Dialogs.Attach(result);
                 _DataRepository.Entry(result).State = EntityState.Modified;

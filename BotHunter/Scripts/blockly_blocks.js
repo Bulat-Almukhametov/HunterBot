@@ -274,7 +274,7 @@ Blockly.JavaScript['condition'] = function (block) {
 Blockly.JavaScript['topic'] = function (block) {
     var text_name = block.getFieldValue('NAME');
     
-    var code = '<think> <set name="topic">' + text_name + '</think>\n';
+    var code = '<think> <set name="topic">' + text_name + '</set></think>\n';
     return code;
 };
 

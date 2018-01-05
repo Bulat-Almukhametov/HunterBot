@@ -14,5 +14,7 @@ namespace BotHunter.Models
         public DbSet<Personality> Personalities { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Dialog> Dialogs { get; set; }
+
+        public DbSet<DialogTopic> Topics { get; set; }
     }
 }

@@ -3,6 +3,10 @@
     src: url(Fantazyor.ttf);
 }
 
+input[disabled] {
+    cursor: text;
+}
+
 #MainCaption {
     color: #6699ccc7;
     font-size: 104px;
@@ -74,4 +78,10 @@
 .scrollmargin {
     height: 80px;
     text-align: center;
+}
+
+.topics-container {
+    width: 60%;
+    border: 2px solid #93d1d4d9;
+    min-height: 20px;
 }
