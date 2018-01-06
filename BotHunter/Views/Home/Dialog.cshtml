@@ -2,12 +2,12 @@
 
 @{
     ViewBag.Title = "Диалог";
+    
 }
-
 
 <h2 class="padding-left-3">Постройте диалог</h2>
 
-@Html.Action("Edit", "Topic", new { id = Model.TopicId })
+@Html.Action("Display", "Topic", new { id = Model.TopicId })
 
 
 @using (Html.BeginForm())
@@ -15,7 +15,6 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.TopicId)
 
@@ -23,14 +22,19 @@
             @Html.LabelFor(model => model.Topic, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div id="topics" class="topics-container"></div>
+                <div class="row">
+                    <a id="addRootTopic" class="button warning">Добавить</a>
+                    <a id="deselectTopic" class="button secondary">Снять выделение</a>
+                </div>
             </div>
         </div>
 
+        @Html.ValidationSummary(false)
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "form-error is-visible" })
             </div>
         </div>
 
@@ -71,179 +75,8 @@
     <script type="text/javascript" src="~/Scripts/jquery.populate.min.js"></script>
 }
 @section Scripts {
-    <script>
-        var editor = ace.edit("aiml-edit");
-        editor.setTheme("ace/theme/iplastic");
-        editor.session.setMode("ace/mode/xml");
-        editor.setAutoScrollEditorIntoView(true);
-        editor.setOptions({
-            fontFamily: "tahoma",
-            fontSize: "10pt",
-            readOnly: true,
-            useWorker: false
-        });
-
-        var workspace = Blockly.inject('blocklyDiv',
-            {
-                media: '/Content/media/',
-                toolbox: window.blockly_toolbox
-            });
-
-        window.blockly_workspace = workspace;
-
-        var xmlString = $("#blocklyWorkspace").val() || window.blockly_workspace;
-        var xml = Blockly.Xml.textToDom(xmlString);
-        Blockly.Xml.domToWorkspace(xml, workspace);
-        workspace.addChangeListener(function () {
-            var aiml = Blockly.JavaScript.workspaceToCode(workspace);
-            var topicId = $("#TopicId").val();
-            if (topicId)
-                aiml = '<topic name="' + topicId + '">\n' + aiml + "\n</topic>";
-
-            aiml = "<aiml>\n" + aiml + "\n</aiml>";
-
-            $(".codeContainer").val(aiml);
-            editor.setValue(aiml, -1);
-
-            var xml = Blockly.Xml.workspaceToDom(workspace);
-            var xml_text = Blockly.Xml.domToText(xml);
-            $("#blocklyWorkspace").val(xml_text);
-        });
-
-        var setDisabledForBlockAndChilds = function (block) {
-            block.setDisabled(!block.parentBlock_ || block.parentBlock_.disabled);
-
-            for (var item of block.childBlocks_) {
-                arguments.callee(item);
-            }
-
-        };
-
-        var qBlocks = ["category"];
-        workspace.addChangeListener(function (event) {
-            if (event.type == Blockly.Events.MOVE) {
-                var block = workspace.getBlockById(event.blockId);
-
-                if (block && qBlocks.filter(function (el) {
-                    return el == block.type;
-                }).length == 0) {
-                    setDisabledForBlockAndChilds(block);
-                }
-
-            }
-
-
-        });
-
-    </script>
-
-    <script type="text/javascript">
-        $(document).tooltip();
-        function uuidv4() {
-            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-                return v.toString(16);
-            });
-        }
-
-        $(function () {
-            $treeview = $("#topics");
-
-            $treeview.jstree({
-                "core": {
-                    "animation": 0,
-                    "check_callback": true,
-                    "data": {
-                        "type": "POST",
-                        "dataType": "json",
-                        "contentType": "application/json;",
-                        "url": "/Topic/All"
-
-                    },
-                },
-                "types": {
-                    "default": {
-                        "icon": "/Content/topic_ico.png"
-                    },
-                    "Office": {
-                        "icon": "/Content/office.png"
-                    },
-                    "HR": {
-                        "icon": "/Content/hr.png"
-                    },
-                    "Technical": {
-                        "icon": "/Content/experience.png"
-                    },
-                },
-                "contextmenu": {
-                    "items": function ($node) {
-                        var tree = $treeview.jstree(true);
-                        return {
-                            "Create": {
-                                "separator_before": false,
-                                "separator_after": false,
-                                "label": "Добавить",
-                                "action": function (obj) {
-                                    var node = tree.create_node($node, { id: uuidv4(), text: "Новая тема", });
-
-                                    tree.deselect_all();
-                                    tree.select_node(node);
-                                    node = tree.get_node(node);
-
-                                    var parent = tree.get_node(node.parent);
-
-                                    $("#topicForm").populate({
-                                        Id: node.id,
-                                        ParentName: parent.text,
-                                        ParentId: parent.id,
-                                        Name: node.text,
-                                    });
-                                    window.topicModalbox.dialog("open");
-                                }
-                            },
-                            "Rename": {
-                                "separator_before": false,
-                                "separator_after": false,
-                                "label": "Изменить",
-                                "action": function (obj) {
-                                    $("#topicForm").populate($node.data);
-                                    window.topicModalbox.dialog("open");
-                                }
-                            },
-                            "Remove": {
-                                "separator_before": false,
-                                "separator_after": false,
-                                "label": "Удалить",
-                                "action": function (obj) {
-                                    tree.delete_node($node);
-                                }
-                            }
-                        };
-                    }
-                },
-                "plugins": [
-                    "contextmenu",
-                    "types",
-                    "wholerow"
-                ]
-            })
-                .on('loaded.jstree', function () {
-                    $treeview.jstree('open_all');
-                    var tree = $treeview.jstree(true);
-
-                    var topicId = $("#TopicId").val();
-                    if (topicId)
-                        tree.select_node(topicId);
-
-                })
-                .on("select_node.jstree", function (event, params) {
-                    $("#TopicId").val(params.node.id);
-                    blockly_workspace.fireChangeListener(blockly_workspace);
-                });
-        });
-
-
-    </script>
+    <script type="text/javascript" src="~/Scripts/DialogView/blocklysetup.js"></script>
+    <script type="text/javascript" src="~/Scripts/DialogView/topic.js"></script>
 
 }
 @section Styles {

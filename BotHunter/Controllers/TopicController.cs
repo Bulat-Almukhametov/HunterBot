@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace BotHunter.Controllers
 {
+    [Authorize]
     public class TopicController : Controller
     {
         private DataRepository _DataRepository;
@@ -41,7 +42,7 @@ namespace BotHunter.Controllers
                 .ToArray());
         }
 
-        public PartialViewResult Edit(Guid? id = null)
+        public PartialViewResult Display(Guid? id = null)
         {
             DialogTopic topic = null;
 
@@ -83,6 +84,24 @@ namespace BotHunter.Controllers
             catch (Exception ex)
             {
                 return Json(new { success = false, error = ex.Message });
+            }
+
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
+        public JsonResult Delete(Guid id)
+        {
+            try
+            {
+                var topic = new DialogTopic { Id = id };
+                _DataRepository.Topics.Attach(topic);
+                _DataRepository.Topics.Remove(topic);
+                _DataRepository.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                Json(new { success = false, error = ex.Message });
             }
 
             return Json(new { success = true });

@@ -54,27 +54,34 @@ namespace BotHunter.Controllers
         [HttpPost]
         public ActionResult Dialog(Dialog dialog)
         {
-            var result = _DataRepository.Dialogs.FirstOrDefault(d => d.Id == dialog.Id);
-            if (result == null)
+            if (ModelState.IsValid)
             {
-                dialog.CreatedBy(_AuthorizeHelper.CurrentUser);
-                _DataRepository.Dialogs.Add(dialog);
+                var result = _DataRepository.Dialogs.FirstOrDefault(d => d.Id == dialog.Id);
+                if (result == null)
+                {
+                    dialog.CreatedBy(_AuthorizeHelper.CurrentUser);
+                    _DataRepository.Dialogs.Add(dialog);
+                }
+                else
+                {
+                    result.ChangedBy(_AuthorizeHelper.CurrentUser);
+                    result.Name = dialog.Name;
+                    result.Aiml = dialog.Aiml;
+                    result.BlocksXml = dialog.BlocksXml;
+                    result.TopicId = dialog.TopicId;
+
+                    _DataRepository.Dialogs.Attach(result);
+                    _DataRepository.Entry(result).State = EntityState.Modified;
+                }
+
+                _DataRepository.SaveChanges();
+
+                return RedirectToAction("DialogsList");
             }
             else
             {
-                result.ChangedBy(_AuthorizeHelper.CurrentUser);
-                result.Name = dialog.Name;
-                result.Aiml = dialog.Aiml;
-                result.BlocksXml = dialog.BlocksXml;
-                result.TopicId = dialog.TopicId;
-
-                _DataRepository.Dialogs.Attach(result);
-                _DataRepository.Entry(result).State = EntityState.Modified;
+                return View(dialog);
             }
-
-            _DataRepository.SaveChanges();
-
-            return RedirectToAction("DialogsList");
         }
 
         public ActionResult DialogsList()

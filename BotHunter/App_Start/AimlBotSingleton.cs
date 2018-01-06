@@ -51,7 +51,7 @@ namespace BotHunter.App_Start
 
             if (dialogs == null)
             {
-                dialogs = String.Join(Environment.NewLine, _Repository.Dialogs.Select(d => d.Aiml));
+                dialogs = "<aiml>" + String.Join(Environment.NewLine, _Repository.Dialogs.Select(d => d.Aiml)) + "</aiml>";
                 var policy = new CacheItemPolicy
                 {
                     AbsoluteExpiration = DateTimeOffset.Now.AddHours(3)

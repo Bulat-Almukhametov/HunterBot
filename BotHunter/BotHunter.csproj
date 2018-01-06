@@ -170,6 +170,20 @@
     <Content Include="Content\experience.png" />
     <Content Include="Content\foundation.css" />
     <Content Include="Content\hr.png" />
+    <Content Include="Content\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\media\1x1.gif" />
     <Content Include="Content\media\click.mp3" />
@@ -212,6 +226,8 @@
     <Content Include="Scripts\blockly_compressed.js" />
     <Content Include="Scripts\blockly_workspace.js" />
     <Content Include="Scripts\blocks_compressed.js" />
+    <Content Include="Scripts\DialogView\blocklysetup.js" />
+    <Content Include="Scripts\DialogView\topic.js" />
     <Content Include="Scripts\foundation.js" />
     <Content Include="Scripts\blockly_javascript.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -281,6 +297,10 @@
     <Compile Include="Migrations\201801041231056_Change_TopicTypeToEnum.Designer.cs">
       <DependentUpon>201801041231056_Change_TopicTypeToEnum.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801060719475_Dialog_NameRequired.cs" />
+    <Compile Include="Migrations\201801060719475_Dialog_NameRequired.Designer.cs">
+      <DependentUpon>201801060719475_Dialog_NameRequired.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DialogTopic.cs" />
     <Compile Include="Models\Infrastructure\DataRepository.cs" />
@@ -311,7 +331,7 @@
     <Content Include="Views\Home\Personality.cshtml" />
     <Content Include="Views\Home\SkillsList.cshtml" />
     <Content Include="Views\Authorize\Index.cshtml" />
-    <Content Include="Views\Topic\Edit.cshtml" />
+    <Content Include="Views\Topic\Display.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -346,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801041231056_Change_TopicTypeToEnum.resx">
       <DependentUpon>201801041231056_Change_TopicTypeToEnum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801060719475_Dialog_NameRequired.resx">
+      <DependentUpon>201801060719475_Dialog_NameRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
