@@ -91,3 +91,11 @@ input[disabled] {
     font-style: italic;
     font-family: serif;
 }
+
+.ui-pg-selbox {
+    padding: 0px;
+}
+
+.ui-jqgrid .ui-jqgrid-pager {
+    height: auto !important;
+}

@@ -18,8 +18,8 @@ namespace BotHunter.App_Start
 
         static Bot GetBot(ChannelAccount account)
         {
-            if (_Bots[account.Id] == null)
-            {
+            //if (_Bots[account.Id] == null)
+            //{
                 var aimlBot = new Bot();
                 var path = HttpContext.Current.Server.MapPath("~/");
                 aimlBot.loadCustomTagHandlers(path + @"bin/AimlTags.dll");
@@ -39,25 +39,27 @@ namespace BotHunter.App_Start
                 {
                     SlidingExpiration = TimeSpan.FromMinutes(30)
                 };
-                _Bots.Add(account.Id, aimlBot, policy);
-            }
+            //    _Bots.Add(account.Id, aimlBot, policy);
+            //}
 
-             return (Bot)_Bots[account.Id];
+            //return (Bot)_Bots[account.Id];
+            return aimlBot;
         }
 
         private static string GetAimlFromDb()
         {
-            string dialogs = _Dialogs["DbDialogs"] as string;
+            string dialogs = null;
+            //dialogs = _Dialogs["DbDialogs"] as string;
 
-            if (dialogs == null)
-            {
+            //if (dialogs == null)
+            //{
                 dialogs = "<aiml>" + String.Join(Environment.NewLine, _Repository.Dialogs.Select(d => d.Aiml)) + "</aiml>";
                 var policy = new CacheItemPolicy
                 {
                     AbsoluteExpiration = DateTimeOffset.Now.AddHours(3)
                 };
-                _Dialogs.Set("DbDialogs", dialogs, policy);
-            }
+                //_Dialogs.Set("DbDialogs", dialogs, policy);
+            //}
             return dialogs;
         }
 
@@ -70,19 +72,20 @@ namespace BotHunter.App_Start
 
         public static AIMLbot.User GetUser(ChannelAccount account)
         {
-            if (_Users[account.Id] == null)
-            {
-                var user = new User(account.Id, (Bot)_Bots[account.Id]);
-                user.Predicates.updateSetting("name", account.Name);
+            //if (_Users[account.Id] == null)
+            //{
+            var user = new User(account.Id, GetBot(account));
+            user.Predicates.updateSetting("name", account.Name);
 
                 var policy = new CacheItemPolicy
                 {
                     SlidingExpiration = TimeSpan.FromMinutes(30)
                 };
-                _Users.Add(account.Id, user, policy);
-            }
+            //    _Users.Add(account.Id, user, policy);
+            //}
 
-            return (User)_Users[account.Id];
+            //return (User)_Users[account.Id];
+            return user;
         }
 
         public static string Chat(ChannelAccount account, string text)

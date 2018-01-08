@@ -141,8 +141,7 @@ namespace BotHunter.Controllers
 
         public ActionResult SkillsList()
         {
-            IList<Skill> skills = _DataRepository.Skills.ToList();
-            return View(skills);
+            return View();
         }
     }
 

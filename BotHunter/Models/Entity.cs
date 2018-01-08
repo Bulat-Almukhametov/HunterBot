@@ -12,6 +12,7 @@ namespace BotHunter.Models
     public abstract class Entity
     {
         [Key, DisplayName("Идентификатор")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         [DisplayName("Создатель")]
         public User Creator { get; set; }
